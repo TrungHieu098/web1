@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.cart {
+    padding-bottom: 2rem;
+    width: 90%;
+    padding-top: 12rem;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    /* background-color: #b89f91; */
+}
+
+.cart-info {
+    padding: 0px 10px;
+    width: 60%;
+    /* background-color: #b89f91; */
+}
+
+.shipping-info {
+    width:  35%;
+    /* background-color: #b89f91; */
+}
+
+h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+table td img {
+    width: 50%;
+}
+
+table th {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+tfoot td {
+    font-weight: bold;
+    color: #d9534f;
+}
+
+.total-label {
+    text-align: right;
+}
+
+form input, form textarea, form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form textarea {
+    resize: none;
+    height: 60px;
+}
+
+button {
+    background-color: #f0ad4e;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #ec971f;
+}
+
+.note a{
+    color: #000;
+}
+.note a:hover{
+    color: #d9534f;
+}
+
+#td {
+    font-size: 32px; /* Kích thước mặc định */
+    cursor: pointer;
+    transition: transform 0.3s, color 0.3s; /* Hiệu ứng chuyển đổi mượt mà */
+}
+
+/* Hiệu ứng khi rê chuột */
+#td:hover {
+    font-size: 40px; /* Tăng kích thước */
+    color: #d9534f; /* Đổi màu thành đỏ */
+    transform: scale(1.2); /* Phóng to một chút */
+}
+
+/* Media Query cho màn hình nhỏ (Tablet và điện thoại) */
+@media screen and (max-width: 768px) {
+    .cart {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 6rem;
+    }
+
+    .cart-info, .shipping-info {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Đảm bảo shipping-info nằm dưới cart-info với khoảng cách rõ ràng */
+    .shipping-info {
+        margin-top: 10px;
+    }
+
+    .total-label {
+        text-align: left;
+    }
+}
+
+/* Media Query cho màn hình rất nhỏ (Điện thoại nhỏ) */
+@media screen and (max-width: 600px) {
+    .cart {
+        padding-top: 6rem;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    table th, table td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    form input, form textarea, form button {
+        font-size: 14px;
+    }
+
+    button {
+        padding: 12px;
+    }
+}

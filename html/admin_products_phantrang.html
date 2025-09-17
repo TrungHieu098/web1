@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Page - Food Store</title>
+    <link rel="stylesheet" href="./assets/css/admin.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* Ẩn submenu mặc định */
+      /* Ẩn submenu mặc định */
+      /* Hiển thị submenu mặc định */
+      .submenu {
+        display: block; /* Hiển thị submenu mà không cần hover */
+        list-style-type: none;
+        padding-left: 40px;
+        margin: 0;
+      }
+
+      /* Định dạng submenu item */
+      .submenu-item {
+        color: #555;
+        text-decoration: none;
+        position: relative;
+        padding-left: 10px; /* Cung cấp không gian cho biểu tượng */
+        line-height: 1.8; /* Giảm chiều cao dòng để mục con nhỏ gọn */
+        font-size: 16px !important; /* Kích thước chữ nhỏ hơn */
+      }
+
+      /* Tạo hình tròn đẹp cho mục con (bằng cách sử dụng pseudo-element) */
+      .submenu-item::before {
+        content: "";
+        position: absolute;
+        left: 3px; /* Đặt biểu tượng cách từ bên trái */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #ff6600; /* Màu của hình tròn */
+      }
+
+      /* Thay đổi màu sắc khi hover vào mục con */
+      .submenu-item:hover {
+        color: #ff6600;
+      }
+
+      .submenu-item:hover::before {
+        background-color: #ff9933; /* Thay đổi màu của biểu tượng khi hover */
+      }
+
+      .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .pagination-btn {
+        background-color: white;
+        border: 1px solid #ddd;
+        padding: 10px 15px;
+        margin: 0 5px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+        color: #9b9b9b;
+        font-weight: bold;
+      }
+
+      .pagination-btn.active {
+        background-color: #ffcc4d;
+        color: white;
+        font-weight: bold;
+      }
+
+      .pagination-btn:hover {
+        background-color: #ffcc4d;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="assets/imgs/logo2.png" alt="Logo" />
+        <h2 style="text-align: center; font-size: 35px">DICA FOOD</h2>
+      </div>
+      <nav>
+        <ul class="sidebar-menu">
+          <li class="tong_quan_first">
+            <a href="admin_tongquan.html"
+              ><i class="fas fa-home"></i> Trang tổng quan</a
+            >
+          </li>
+          <li class="menu-item">
+            <a href="../admin.html"><i class="fas fa-utensils"></i> Sản phẩm</a>
+            <ul class="submenu">
+              <li>
+                <a href="admin_products.html" class="submenu-item"
+                  >Thêm sản phẩm mới</a
+                >
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="admin_khachhang.html"
+              ><i class="fas fa-users"></i> Khách hàng</a
+            >
+          </li>
+          <li>
+            <a href="admin_donhang.html"
+              ><i class="fas fa-shopping-cart"></i> Đơn hàng</a
+            >
+          </li>
+          <li>
+            <a href="admin_thongke.html"
+              ><i class="fas fa-chart-line"></i> Thống kê</a
+            >
+          </li>
+          <div class="sidebar-group">
+            <li class="sidebar-02">
+              <a href=""><i class="fas fa-calculator"></i> Máy tính</a>
+            </li>
+            <li class="sidebar-02">
+              <a href="../admin.html"
+                ><i class="fas fa-arrow-alt-circle-left"></i> Trang chủ</a
+              >
+            </li>
+            <li class="sidebar-02">
+              <a href="../index.html"
+                ><i class="fas fa-sign-out-alt"></i> Đăng xuất</a
+              >
+            </li>
+          </div>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <header>
+        <h1>
+          Chào mừng bạn đến với trang sản phẩm của cửa hàng
+          <span class="main-content-title">DICA FOOD</span>
+        </h1>
+      </header>
+
+      <div class="product-detail-container">
+        <!-- Chi tiết sản phẩm -->
+        <div class="product-detail-card">
+          <h2 style="color: #ff8800; margin-bottom: 20px; text-align: center">
+            Xem trước sản phẩm
+          </h2>
+          <div class="product-images-section">
+            <img
+              src="./assets/imgs/Menu20.jpg"
+              alt="Main Product Image"
+              class="product-main-image"
+            />
+          </div>
+          <div class="product-info-section">
+            <p><strong>Danh mục:</strong> Món chính</p>
+            <h2 class="product-title">Hamburger</h2>
+            <hr />
+            <p><strong>Mô tả:</strong></p>
+            <ul style="list-style: none">
+              <li>Hamburger là món ăn truyền thống nổi tiếng trên thế giới.</li>
+              <li>
+                Sản phẩm kết hợp hoàn hảo giữa các thành phần như bột mì, trứng,
+                xúc xích, phô mai...
+              </li>
+            </ul>
+            <p><strong>Giá:</strong> 5$ - 3.5$</p>
+            <div class="product-quantity-section">
+              <label for="quantity-input"><strong>Số lượng:</strong></label>
+              <input type="number" id="quantity-input" value="1" min="1" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Form sửa sản phẩm -->
+        <div class="product-edit-card">
+          <h2 style="color: #ff8800; margin-bottom: 20px">Thay đổi sản phẩm</h2>
+          <form>
+            <label for="edit-product-name">Tên sản phẩm:</label>
+            <input
+              type="text"
+              id="edit-product-name"
+              value="Hamburger"
+              required
+            />
+
+            <label for="edit-product-category">Danh mục:</label>
+            <select id="edit-product-category" required>
+              <option value="mon-chinh">Món mặn</option>
+              <option value="mon-chinh">Món nước</option>
+              <option value="mon-chinh">Món ăn nhẹ</option>
+              <option value="mon-chinh">Món lẩu</option>
+              <option value="trang-mieng">Món tráng miệng</option>
+              <option value="an-nhanh">Món mới</option>
+            </select>
+
+            <label for="edit-product-price">Giá:</label>
+            <input type="number" id="edit-product-price" value="5" required />
+
+            <label for="edit-product-description">Mô tả:</label>
+            <textarea
+              id="edit-product-description"
+              required
+              style="height: 100px"
+            >
+      Hamburger là món ăn truyền thống nổi tiếng trên thế giới.
+            </textarea>
+
+            <label for="edit-product-quantity">Số lượng:</label>
+            <input
+              type="number"
+              id="edit-product-quantity"
+              value="10"
+              required
+            />
+
+            <label for="edit-product-image">Hình ảnh sản phẩm:</label>
+            <input type="file" id="edit-product-image" accept="image/*" />
+
+            <button type="submit" class="update-button">
+              Cập nhật sản phẩm
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Tìm Kiếm Sản Phẩm -->
+      <div class="product-search">
+        <h2>Tìm Kiếm Sản Phẩm</h2>
+        <div class="search-container">
+          <i class="fas fa-search search-icon"></i>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Nhập tên sản phẩm..."
+          />
+        </div>
+      </div>
+
+      <!-- Danh sách Sản Phẩm -->
+      <div class="product-list">
+        <h2 style="text-align: left">Danh sách Sản Phẩm</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Ảnh</th>
+              <th>Tên sản phẩm</th>
+              <th>Giá</th>
+              <th>Mô tả</th>
+              <th>Số lượng</th>
+              <th>Trạng thái</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- San pham 1  -->
+            <tr>
+              <td>
+                <img src="./assets/imgs/item-1.png" alt="Product Image" />
+              </td>
+              <td>Tên sản phẩm</td>
+              <td>Giá sản phẩm</td>
+              <td>gà kho</td>
+              <td>Số lượng</td>
+              <td>Còn hàng</td>
+              <td>
+                <button class="edit-button" onclick="scrollToTop()">
+                  <i class="fas fa-edit"></i> Sửa
+                </button>
+                <button class="delete-button">
+                  <i class="fas fa-trash-alt"></i> Xóa
+                </button>
+              </td>
+            </tr>
+
+            <!-- San pham 2  -->
+            <tr>
+              <td>
+                <img src="./assets/imgs/item-2.png" alt="Product Image" />
+              </td>
+              <td>Tên sản phẩm</td>
+              <td>Giá sản phẩm</td>
+              <td>gà chiên</td>
+              <td>Số lượng</td>
+              <td>Còn hàng</td>
+              <td>
+                <button class="edit-button" onclick="scrollToTop()">
+                  <i class="fas fa-edit"></i> Sửa
+                </button>
+                <button class="delete-button">
+                  <i class="fas fa-trash-alt"></i> Xóa
+                </button>
+              </td>
+            </tr>
+            <!-- San pham 3  -->
+            <tr>
+              <td>
+                <img src="./assets/imgs/item-3.png" alt="Product Image" />
+              </td>
+              <td>Tên sản phẩm</td>
+              <td>Giá sản phẩm</td>
+              <td>Gà ủ muối</td>
+              <td>Số lượng</td>
+              <td>Còn hàng</td>
+              <td>
+                <button class="edit-button" onclick="scrollToTop()">
+                  <i class="fas fa-edit"></i> Sửa
+                </button>
+                <button class="delete-button">
+                  <i class="fas fa-trash-alt"></i> Xóa
+                </button>
+              </td>
+            </tr>
+            <!-- San pham 3  -->
+            <tr>
+              <td>
+                <img src="./assets/imgs/item-3.png" alt="Product Image" />
+              </td>
+              <td>Tên sản phẩm</td>
+              <td>Giá sản phẩm</td>
+              <td>Gà ủ muối</td>
+              <td>Số lượng</td>
+              <td>Còn hàng</td>
+              <td>
+                <button class="edit-button" onclick="scrollToTop()">
+                  <i class="fas fa-edit"></i> Sửa
+                </button>
+                <button class="delete-button">
+                  <i class="fas fa-trash-alt"></i> Xóa
+                </button>
+              </td>
+            </tr>
+            <!-- San pham 3  -->
+            <tr>
+              <td>
+                <img src="./assets/imgs/item-3.png" alt="Product Image" />
+              </td>
+              <td>Tên sản phẩm</td>
+              <td>Giá sản phẩm</td>
+              <td>Gà ủ muối</td>
+              <td>Số lượng</td>
+              <td>Còn hàng</td>
+              <td>
+                <button class="edit-button" onclick="scrollToTop()">
+                  <i class="fas fa-edit"></i> Sửa
+                </button>
+                <button class="delete-button">
+                  <i class="fas fa-trash-alt"></i> Xóa
+                </button>
+              </td>
+            </tr>
+            <!-- San pham 3  -->
+            <tr>
+              <td>
+                <img src="./assets/imgs/item-3.png" alt="Product Image" />
+              </td>
+              <td>Tên sản phẩm</td>
+              <td>Giá sản phẩm</td>
+              <td>Gà ủ muối</td>
+              <td>Số lượng</td>
+              <td>Còn hàng</td>
+              <td>
+                <button class="edit-button" onclick="scrollToTop()">
+                  <i class="fas fa-edit"></i> Sửa
+                </button>
+                <button class="delete-button">
+                  <i class="fas fa-trash-alt"></i> Xóa
+                </button>
+              </td>
+            </tr>
+            <!-- San pham 3  -->
+            <tr>
+              <td>
+                <img src="./assets/imgs/item-3.png" alt="Product Image" />
+              </td>
+              <td>Tên sản phẩm</td>
+              <td>Giá sản phẩm</td>
+              <td>Gà ủ muối</td>
+              <td>Số lượng</td>
+              <td>Còn hàng</td>
+              <td>
+                <button class="edit-button" onclick="scrollToTop()">
+                  <i class="fas fa-edit"></i> Sửa
+                </button>
+                <button class="delete-button">
+                  <i class="fas fa-trash-alt"></i> Xóa
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Phân trang -->
+      <div class="pagination" style="margin-top: 30px">
+        <button class="pagination-btn" id="prev">«</button>
+        <button class="pagination-btn active" id="btnPage1">1</button>
+        <button class="pagination-btn" id="btnPage2">2</button>
+        <button class="pagination-btn" id="btnPage3">3</button>
+        <button class="pagination-btn" id="btnPage4">4</button>
+        <button class="pagination-btn" id="btnPage5">5</button>
+        <button class="pagination-btn" id="next">»</button>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth", // Cuộn mượt mà
+      });
+    }
+
+    const paginationBtns = document.querySelectorAll(".pagination-btn");
+
+    // Lấy số trang từ URL query string
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentPage = urlParams.get("page") || "1"; // Mặc định là trang 1 nếu không có page
+
+    // Kích hoạt nút tương ứng
+    paginationBtns.forEach((btn) => {
+      // Xóa tất cả các trạng thái active trước khi thêm
+      btn.classList.remove("active");
+
+      // So sánh nội dung nút với currentPage
+      if (btn.textContent.trim() === currentPage) {
+        btn.classList.add("active");
+      }
+    });
+
+    // Hàm để thay đổi trạng thái active và điều hướng trang
+    function handlePaginationClick(event) {
+      // Lấy số trang từ nút được bấm
+      const pageId = event.target.textContent.trim();
+
+      // Reload trang và truyền số trang qua URL
+      window.location.href = `?page=${pageId}`;
+    }
+
+    // Gắn sự kiện click cho tất cả các nút
+    paginationBtns.forEach((btn) => {
+      btn.addEventListener("click", handlePaginationClick);
+    });
+  </script>
+  <script src="./assets/js/admin.js"></script>
+</html>

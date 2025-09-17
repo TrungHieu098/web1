@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FOOD-SGU</title>
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <!-- Thêm Font Awesome vào trong <head> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- <link rel="stylesheet" href="f"> -->
+    <!-- Box Icon -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <style>
+      .autocomplete-container {
+        position: relative;
+      }
+
+      .suggestions-list {
+        position: absolute;
+        background: white;
+        border: 1px solid #ccc;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        max-height: 150px;
+        overflow-y: auto;
+        z-index: 100;
+      }
+
+      .suggestions-list li {
+        padding: 8px;
+        cursor: pointer;
+      }
+
+      .suggestions-list li:hover {
+        background: #f0f0f0;
+      }
+      .dish-input {
+        background-color: #f0f0f0;
+        padding: 5px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        border-bottom: none;
+      }
+
+      .product_detail_phantrang {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 20px;
+        gap: 20px;
+      }
+
+      .product_detail_phantrang a {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .product_detail_phantrang--left,
+      .product_detail_phantrang--right {
+        background-color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 20px;
+        color: #333;
+        cursor: pointer;
+      }
+
+      /* Container styling for pagination */
+      .product_detail_phantrang {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .product_detail_phantrang a {
+        text-decoration: none;
+        padding: 8px 15px;
+        font-size: 20px;
+        font-weight: bold;
+        /* border: 2px solid #ffffff; */
+        color: #000;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .product_detail_phantrang a:hover {
+        background-color: #c9c6c6;
+        transform: translateY(-2px);
+      }
+
+      .product_detail_phantrang a.active {
+        background-color: #fff;
+      }
+
+      .product_detail_phantrang button {
+        padding: 8px 12px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #000;
+        background-color: #c9c6c6;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .product_detail_phantrang button:hover {
+        background-color: #fff;
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <!-- ======================================TOP-HEADER=================================== -->
+      <div class="top-header">
+        <div class="cnt-block">
+          <p>+0123 456 789</p>
+          <ul class="list-unstyled list-inline">
+            <li class="dropdown dropdown-small">
+              <a
+                href="#"
+                class="dropdown-toggle"
+                data-hover="dropdown"
+                data-toggle="dropdown"
+              >
+                <span class="value">USD </span><i class="fas fa-caret-down"></i>
+              </a>
+              <!-- <ul class="dropdown-menu">
+                            <li><a href="#">USD</a></li>
+                            <li><a href="#">INR</a></li>
+                            <li><a href="#">GBP</a></li>
+                        </ul> -->
+            </li>
+            <li class="dropdown dropdown-small">
+              <a
+                href="#"
+                class="dropdown-toggle"
+                data-hover="dropdown"
+                data-toggle="dropdown"
+              >
+                <span class="value">English </span
+                ><i class="fas fa-caret-down"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <!-- <li><a href="#">English</a></li>
+                            <li><a href="#">French</a></li>
+                            <li><a href="#">German</a></li> -->
+              </ul>
+            </li>
+            <li><a href="#">My Account</a></li>
+            <li><a href="#">Wishlist</a></li>
+            <li><a href="#">MyCart</a></li>
+            <li><a href="#">Checkout</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ======================================MAIN-HEADER=================================== -->
+      <div class="main-header">
+        <div class="main-header-img">
+          <img src="assets/imgs/logo2.png" alt="" />
+          <h2>DICA <br />FOOD</h2>
+        </div>
+        <div class="main-header-search">
+          <input type="text" placeholder="Tìm kiếm món ăn..." />
+          <button class="filter-btn">
+            <a href="admin_home_search.html" style="color: white"
+              ><i class="bx bx-search"></i
+            ></a>
+          </button>
+        </div>
+        <div class="main-header-login">
+          <i class="bx bxs-user"></i>
+          <!-- Biểu tượng người trước Đăng Nhập -->
+          <a href="../admin.html" class="login-link">Admin</a>
+          <span>|</span>
+          <!-- Dấu phân cách giữa Đăng Nhập và Đăng Kí -->
+          <a href="../index.html" class="register-link">Đăng Xuất</a>
+          <span>|</span>
+          <p>
+            <a href="admin_products.html">Thêm sản phẩm mới</a>
+          </p>
+          <span>|</span>
+          <p>
+            <a href="admin_thongke.html">Trang tổng quan</a>
+          </p>
+        </div>
+      </div>
+      <!-- ======================================CATEGORY-HEADER=================================== -->
+      <div class="category-header">
+        <a href="../admin.html" class="category-link">TRANG CHỦ</a>
+        <a href="admin_monnuoc.html" class="category-link">MÓN MẶN</a>
+        <a href="admin_monnuoc.html" class="category-link">MÓN NƯỚC</a>
+        <a href="admin_monnuoc.html" class="category-link">MÓN ĂN NHẸ</a>
+        <a href="admin_monnuoc.html" class="category-link">MÓN LẨU</a>
+        <a href="admin_monnuoc.html" class="category-link">MÓN TRÁNG MIỆNG</a>
+        <!-- <a href="admin_monnuoc.html" class="category-link">MÓN MỚI</a> -->
+      </div>
+    </header>
+
+    <div style="margin-top: 170px"></div>
+
+    <!-- Items -->
+    <section class="items" id="items">
+      <div
+        class="filter-sort-container"
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          margin-top: -50px;
+          margin-bottom: 50px;
+          max-width: 1500px;
+        "
+      >
+        <label for="sort-options">Phân loại:</label>
+        <div class="select-container">
+          <select id="sort-options">
+            <option value="all">Tất cả</option>
+            <option value="drinks">Món Nước</option>
+            <option value="main-dish">Món Mặn</option>
+            <option value="snacks">Món Ăn Nhẹ</option>
+            <option value="hotpot">Món Lẩu</option>
+            <option value="dessert">Món Tráng Miệng</option>
+            <option value="new">Món Mới</option>
+          </select>
+        </div>
+
+        <!-- Add autocomplete search box -->
+        <label for="search-dishes">Tìm món ăn:</label>
+        <div class="autocomplete-container">
+          <input
+            type="text"
+            id="search-dishes"
+            placeholder="Nhập tên món"
+            class="dish-input"
+          />
+          <ul id="suggestions" class="suggestions-list"></ul>
+        </div>
+
+        <label for="price-from">Giá từ:</label>
+        <input
+          type="number"
+          id="price-from"
+          placeholder="Tối thiểu"
+          class="price-input"
+          min="0"
+        />
+        <label for="price-to">đến:</label>
+        <input
+          type="number"
+          id="price-to"
+          placeholder="Tối đa"
+          class="price-input"
+          min="0"
+        />
+        <a href="./html/admin_home_search.html" class="search-button">
+          <i class="bx bx-search"></i>
+        </a>
+
+        <div class="icon-button"><i class="bx bx-sort-up"></i></div>
+        <div class="icon-button"><i class="bx bx-sort-down"></i></div>
+        <div class="icon-button"><i class="bx bx-refresh"></i></div>
+        <div class="icon-button"><i class="bx bx-x"></i></div>
+      </div>
+      <h2 class="heading container" style="margin-top: -50px">Menu</h2>
+
+      <div class="item-content container">
+        <div class="item-box">
+          <span class="sale">Sale</span>
+          <img src="assets/imgs/Menu4.jpg" alt="" />
+          <h2>Spicy Burger</h2>
+          <div class="price">
+            <h3>35.000VND</h3>
+            <p>50.000VND</p>
+          </div>
+          <div class="admin-controls">
+            <a href="admin_products_phantrang.html" class="edit-btn"
+              ><i class="fas fa-edit"></i> Sửa</a
+            >
+            <a
+              href="html/product_delete.html"
+              class="delete-btn"
+              onclick="return confirm('Bạn có chắc muốn xóa món này không ?')"
+              ><i class="fas fa-trash-alt"></i> Xóa</a
+            >
+          </div>
+        </div>
+
+        <div class="item-box">
+          <span class="sale">Sale</span>
+          <img src="assets/imgs/Menu2.webp" alt="" />
+          <h2>Mutton BBQ</h2>
+          <div class="price">
+            <h3>35.000VND</h3>
+            <p>50.000VND</p>
+          </div>
+          <div class="admin-controls">
+            <a href="admin_products_phantrang.html" class="edit-btn"
+              ><i class="fas fa-edit"></i> Sửa</a
+            >
+            <!-- <a href="admin_products_phantrang.html" class="item-btn"><i class="fas fa-eye"></i> View Product</a> -->
+            <a
+              href="product_delete.html"
+              class="delete-btn"
+              onclick="return confirm('Bạn có chắc muốn xóa món này không ?')"
+              ><i class="fas fa-trash-alt"></i> Xóa</a
+            >
+          </div>
+          <!-- <a href="admin_products_phantrang.html" class="item-btn">View Product</a> -->
+        </div>
+        <div class="item-box">
+          <span class="sale">Sale</span>
+          <img src="assets/imgs/Menu20.jpg" alt="" />
+          <h2>Beef Burger</h2>
+          <div class="price">
+            <h3>35.000VND</h3>
+            <p>50.000VND</p>
+          </div>
+          <!-- <a href="admin_products_phantrang.html" class="item-btn">View Product</a> -->
+          <div class="admin-controls">
+            <a href="admin_products_phantrang.html" class="edit-btn"
+              ><i class="fas fa-edit"></i> Sửa</a
+            >
+            <!-- <a href="admin_products_phantrang.html" class="item-btn"><i class="fas fa-eye"></i> View Product</a> -->
+            <a
+              href="product_delete.html"
+              class="delete-btn"
+              onclick="return confirm('Bạn có chắc muốn xóa món này không ?')"
+              ><i class="fas fa-trash-alt"></i> Xóa</a
+            >
+          </div>
+        </div>
+        <div class="item-box">
+          <span class="sale">Sale</span>
+          <img src="assets/imgs/Menu8.jpg" alt="" />
+          <h2>Chicken With Bacon</h2>
+          <div class="price">
+            <h3>35.000VND</h3>
+            <p>50.000VND</p>
+          </div>
+          <!-- <a href="admin_products_phantrang.html" class="item-btn">View Product</a>  -->
+          <div class="admin-controls">
+            <a href="admin_products_phantrang.html" class="edit-btn"
+              ><i class="fas fa-edit"></i> Sửa</a
+            >
+            <!-- <a href="admin_products_phantrang.html" class="item-btn"><i class="fas fa-eye"></i> View Product</a> -->
+            <a
+              href="product_delete.html"
+              class="delete-btn"
+              onclick="return confirm('Bạn có chắc muốn xóa món này không ?')"
+              ><i class="fas fa-trash-alt"></i> Xóa</a
+            >
+          </div>
+        </div>
+        <div class="item-box">
+          <span class="sale">Sale</span>
+          <img src="assets/imgs/Menu11.jpg" alt="" />
+          <h2>Tiny Quies Fish</h2>
+          <div class="price">
+            <h3>35.000VND</h3>
+            <p>50.000VND</p>
+          </div>
+          <!-- <a href="admin_products_phantrang.html" class="item-btn">View Product</a>  -->
+          <div class="admin-controls">
+            <a href="admin_products_phantrang.html" class="edit-btn"
+              ><i class="fas fa-edit"></i> Sửa</a
+            >
+            <!-- <a href="admin_products_phantrang.html" class="item-btn"><i class="fas fa-eye"></i> View Product</a> -->
+            <a
+              href="product_delete.html"
+              class="delete-btn"
+              onclick="return confirm('Bạn có chắc muốn xóa món này không ?')"
+              ><i class="fas fa-trash-alt"></i> Xóa</a
+            >
+          </div>
+        </div>
+        <div class="item-box">
+          <span class="sale">Sale</span>
+          <img src="assets/imgs/Menu9.jpg" alt="" />
+          <h2>Mixes Pizzas</h2>
+          <div class="price">
+            <h3>35.000VND</h3>
+            <p>50.000VND</p>
+          </div>
+          <!-- <a href="admin_products_phantrang.html" class="item-btn">View Product</a>  -->
+          <div class="admin-controls">
+            <a href="admin_products_phantrang.html" class="edit-btn"
+              ><i class="fas fa-edit"></i> Sửa</a
+            >
+            <!-- <a href="admin_products_phantrang.html" class="item-btn"><i class="fas fa-eye"></i> View Product</a> -->
+            <a
+              href="product_delete.html"
+              class="delete-btn"
+              onclick="return confirm('Bạn có chắc muốn xóa món này không ?')"
+              ><i class="fas fa-trash-alt"></i> Xóa</a
+            >
+          </div>
+        </div>
+        <div class="item-box">
+          <span class="sale">Sale</span>
+          <img src="assets/imgs/Menu2.webp" alt="" />
+          <h2>Meta Burger</h2>
+          <div class="price">
+            <h3>35.000VND</h3>
+            <p>50.000VND</p>
+          </div>
+          <!-- <a href="admin_products_phantrang.html" class="item-btn">View Product</a>  -->
+          <div class="admin-controls">
+            <a href="admin_products_phantrang.html" class="edit-btn"
+              ><i class="fas fa-edit"></i> Sửa</a
+            >
+            <!-- <a href="admin_products_phantrang.html" class="item-btn"><i class="fas fa-eye"></i> View Product</a> -->
+            <a
+              href="product_delete.html"
+              class="delete-btn"
+              onclick="return confirm('Bạn có chắc muốn xóa món này không ?')"
+              ><i class="fas fa-trash-alt"></i> Xóa</a
+            >
+          </div>
+        </div>
+        <div class="item-box">
+          <span class="sale">Sale</span>
+          <img src="assets/imgs/Omurice.jpg" alt="" />
+          <h2>Chicken Tiny</h2>
+          <div class="price">
+            <h3>35.000VND</h3>
+            <p>50.000VND</p>
+          </div>
+          <!-- <a href="admin_products_phantrang.html" class="item-btn">View Product</a>  -->
+          <div class="admin-controls">
+            <a href="admin_products_phantrang.html" class="edit-btn"
+              ><i class="fas fa-edit"></i> Sửa</a
+            >
+            <!-- <a href="admin_products_phantrang.html" class="item-btn"><i class="fas fa-eye"></i> View Product</a> -->
+            <a
+              href="product_delete.html"
+              class="delete-btn"
+              onclick="return confirm('Bạn có chắc muốn xóa món này không ?')"
+              ><i class="fas fa-trash-alt"></i> Xóa</a
+            >
+          </div>
+        </div>
+      </div>
+      <!-- Phân trang -->
+      <div class="product_detail_phantrang" style="margin-top: 20px">
+        <button class="product_detail_phantrang--left">&laquo;</button>
+        <a href="../admin.html">1</a>
+        <a href="admin2.html">2</a>
+        <a href="./html/admin3.html" class="active">3</a>
+        <button class="product_detail_phantrang--right">&raquo;</button>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter container" id="newsletter">
+      <h2>Subscribe and Get 10% Discount</h2>
+      <p>Be the first to get the latest news, promotions and much more.</p>
+      <form action="">
+        <input
+          type="email"
+          name=""
+          id=""
+          class="Email"
+          placeholder="Email"
+          required
+        />
+        <input type="submit" value="Subscribe" class="s-btn" />
+      </form>
+    </section>
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-content container">
+        <div class="footer-box">
+          <a href="#" class="footer-logo">
+            <img src="assets/imgs/logo2.png" alt="" />
+          </a>
+          <p>273 An Duong Vuong, Phuong 3, Quan 5, Thanh Pho Ho Chi Minh</p>
+          <div class="social">
+            <a href="#"><i class="bx bxl-instagram"></i></a>
+            <a href="#"><i class="bx bxl-linkedin"></i></a>
+            <a href="#"><i class="bx bxl-tiktok"></i></a>
+            <a href="#"><i class="bx bxl-pinterest-alt"></i></a>
+          </div>
+        </div>
+        <div class="footer-box">
+          <h3>Opening Hours</h3>
+          <p><span>Mon</span>: 9:00 - 20:30</p>
+          <p><span>Tue</span>: 9:00 - 20:30</p>
+          <p><span>Wed</span>: 9:00 - 20:30</p>
+          <p><span>Thu</span>: 9:00 - 20:30</p>
+          <p><span>Fri</span>: 9:00 - 20:30</p>
+          <p><span>Sat</span>: 9:00 - 20:00</p>
+          <p><span>Sun</span>: Closed</p>
+        </div>
+        <div class="footer-box">
+          <h3>Information</h3>
+          <a href="#">About Us</a>
+          <a href="#">Blog</a>
+          <a href="#">Dica Food Gallery</a>
+          <a href="#">Dica Food Talent Chefs</a>
+          <a href="#">Testimonials</a>
+        </div>
+        <div class="footer-box">
+          <h3>Contact Us</h3>
+          <p>+9123456789</p>
+          <p>Dicafood@gmail.com</p>
+          <p>
+            Address: 273 An Duong Vuong, Phuong 3, Quan 5, Thanh Pho Ho Chi Minh
+          </p>
+        </div>
+      </div>
+      <p class="copyright">&#169; 2024, Dica Food Restaurant</p>
+    </div>
+
+    <script>
+      function addNewProduct() {
+        // Điều hướng đến trang thêm sản phẩm mới
+        window.location.href = "admin_products_phantrang.html";
+      }
+    </script>
+  </body>
+</html>
