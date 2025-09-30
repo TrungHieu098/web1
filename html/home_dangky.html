@@ -79,12 +79,12 @@
                     <input type="email" id="email" name="email" placeholder="Nhập Email" />
                 </div>
                 <div class="user-input-box">
-                    <label for="phoneNumber">Số điện thoại</label>
-                    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Nhập số điện thoại" />
+                    <label for="phoneNumber">Mật khẩu</label>
+                    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Nhập mật khẩu" />
                 </div>
                 <div class="user-input-box">
-                    <label for="password">Mật khẩu</label>
-                    <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" />
+                    <label for="password">Số điện thoại</label>
+                    <input type="password" id="password" name="password" placeholder="Nhập số điện thoại" />
                 </div>
                 <div class="user-input-box">
                     <label for="confirmPassword">Xác nhận mật khẩu</label>
@@ -92,8 +92,42 @@
                 </div>
                 <div class="user-input-box address-box">
                     <label for="address">Địa chỉ</label>
-                    <input type="text" id="address" name="address" placeholder="Địa chỉ" />
+                    <input type="text" id="address" name="address" placeholder="Nhập địa chỉ" />
                 </div>
+    <div class="user-input-box address-box">
+  <label for="city">Thành Phố</label>
+  <div class="custom-select">
+    <select id="city" name="city" required>
+      <option value="">-- Chọn tỉnh/thành phố --</option>
+      <option value="hanoi">Hà Nội</option>
+      <option value="danang">Đà Nẵng</option>
+      <option value="hcm">TP. Hồ Chí Minh</option>
+      <option value="cantho">Cần Thơ</option>
+      <option value="other">Khác...</option>
+    </select>
+  </div>
+</div>
+    <div class="user-input-box address-box">
+  <label for="city">Phường</label>
+  <div class="custom-select">
+    <select id="city" name="city" required>
+      <option value="">-- Chọn Phường --</option>
+      <option value="hanoi">Phường 1</option>
+      <option value="danang">Phường 2</option>
+      <option value="hcm">Phường 3</option>
+      <option value="cantho">Phường 4</option>
+      <option value="other">Phường 5</option>
+      <option value="other">Phường 6</option>
+      <option value="other">Phường 7</option>
+      <option value="other">Phường 8</option>
+      <option value="other">Phường 9</option>
+      <option value="other">Phường 10</option>
+      <option value="other">Khác...</option>
+    </select>
+  </div>
+</div>
+
+
             </div>
             
 
@@ -153,8 +187,8 @@
             // Hiển thị thông báo thành công
             alert("Đã đăng ký tài khoản thành công!");
 
-            // Chuyển hướng sang trang user.html
-            window.location.href = "../html/user.html";
+            // Chuyển hướng sang trang home_dangky.html
+            window.location.href = "../html/home_login.html";
         });
     </script>
 </body>
