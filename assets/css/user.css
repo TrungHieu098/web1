@@ -1,4 +1,4 @@
-/* .customer-info {
+ .customer-info {
     background-color: #b9b596;
 }
 
@@ -57,14 +57,14 @@ body {
     margin-top: -100px;
 }
 
-/* .container-user-info {
+.container-user-info {
     max-width: 1400px;
     margin: auto;
     width: 100%;
     margin-top: 250px;
     margin-bottom: 100px;
     background-color: transparent;
-} */
+} 
 
 .container-user-info {
     display: flex;
@@ -673,4 +673,5 @@ input[type=number] {
 
 .main-header-cart {
     padding-right: 70px;
+}
 }
